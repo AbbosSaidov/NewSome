@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - asssass@localhost" uuid="7f5646cd-f9aa-41cc-a5ec-8f290be66327">
+    <database-info product="MySQL" version="5.5.5-10.1.31-MariaDB" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="asssass"/>
+    <table name="messages" schema="" catalog="asssass" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="from_users_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="to_users_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="title" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="message" sqlType="VARCHAR" precision="1000" scale="0" nullable="false" jdbcType="12"/>
+      <column name="sentat" sqlType="TIMESTAMP" precision="19" scale="0" nullable="false" jdbcType="93" def="Q1VSUkVOVF9USU1FU1RBTVA=" version="true"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="messages_users_from" columns="to_users_id" ref-table="users" ref-schema="" ref-catalog="asssass" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="messages_users_to" columns="from_users_id" ref-table="users" ref-schema="" ref-catalog="asssass" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="messages_users_from" unique="false" columns="to_users_id"/>
+      <index name="messages_users_to" unique="false" columns="from_users_id"/>
+    </table>
+    <table name="players" schema="" catalog="asssass" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="UniqueID" sqlType="TEXT" precision="16383" scale="0" nullable="false" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <index name="sa" unique="true" columns="UniqueID"/>
+    </table>
+    <table name="users" schema="" catalog="asssass" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="password" sqlType="TEXT" precision="16383" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="gender" sqlType="VARCHAR" precision="6" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="messages_users_from" table="messages" schema="" catalog="asssass" columns="to_users_id"/>
+      <exported-key name="messages_users_to" table="messages" schema="" catalog="asssass" columns="from_users_id"/>
+    </table>
+  </data-source>
+</component>
